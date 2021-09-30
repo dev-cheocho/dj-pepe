@@ -26,10 +26,10 @@ class Client(commands.Bot):
 
         await self.change_presence(activity=discord.Streaming(url="https://twitch.tv/dj.pepe", name="Service Provided. dj-pepe"))
 
-    # async def on_command_error(self, ctx, exception):
+    async def on_command_error(self, ctx, exception):
         
-    #     if exception:
-    #         return await ctx.reply("🚫  의도되지 않은 에러가 발생했습니다. (관리자를 호출해주세요)", mention_author=False)
+        if exception:
+            return await ctx.reply("🚫  의도되지 않은 에러가 발생했습니다. (관리자를 호출해주세요)", mention_author=False)
 
 if __name__ == "__main__" and int(sys.version_info.major) >= 3:
     Client(config.get('command-prefix')).run(config.get('token'))
